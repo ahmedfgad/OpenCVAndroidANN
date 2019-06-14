@@ -13,7 +13,8 @@ import org.opencv.ml.Ml;
 public class OpenCVApp {
 
     public static void main(String[] args) {
-        System.load("D:\\FCI\\Programming\\OpenCV\\OpenCV 4.1.0\\opencv-4.1.0-vc14_vc15\\opencv\\build\\java\\x64\\" + Core.NATIVE_LIBRARY_NAME + ".dll");
+        String currentDirectory = System.getProperty("user.dir");
+        System.load(currentDirectory + "\\OpenCVDLL\\x64\\" + Core.NATIVE_LIBRARY_NAME + ".dll");
 
         double[][] XORTrainArray = {
             {0.0, 0.0},
@@ -67,7 +68,7 @@ public class OpenCVApp {
         System.out.println("Output Layer Weights : \n" + output_weights.dump());
 
         try{
-            ANN.save("OpenCV_ANN_XOR.yml");
+            ANN.save(currentDirectory + "\\OpenCV_ANN_XOR.yml");
             System.out.println("Model Saved Successfully.");
         } catch(Exception ex) {
             System.err.println("Error Saving Model.");

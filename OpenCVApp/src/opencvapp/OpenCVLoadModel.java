@@ -6,7 +6,8 @@ import org.opencv.ml.ANN_MLP;
 
 public class OpenCVLoadModel {
     public static void main(String[] args) {
-        System.load("D:\\FCI\\Programming\\OpenCV\\OpenCV 4.1.0\\opencv-4.1.0-vc14_vc15\\opencv\\build\\java\\x64\\" + Core.NATIVE_LIBRARY_NAME + ".dll");
+       String currentDirectory = System.getProperty("user.dir");
+       System.load(currentDirectory + "\\OpenCVDLL\\x64\\" + Core.NATIVE_LIBRARY_NAME + ".dll");
 
         double[][] XORTrainArray = {
             {0.0, 0.0},
@@ -34,7 +35,7 @@ public class OpenCVLoadModel {
         XORTrainOut.put(3, 0, XORTrainOutArray[3]);
         System.out.println("Train Labels : \n" + XORTrainOut.dump());
 
-        ANN_MLP ANN = ANN_MLP.load("C:\\Users\\Dell\\Documents\\NetBeansProjects\\OpenCVApp\\OpenCV_ANN_XOR.yml");
+        ANN_MLP ANN = ANN_MLP.load(currentDirectory + "\\OpenCV_ANN_XOR.yml");
 
         double num_correct_predictions = 0;
         for (int i = 0; i < XORTrain.rows(); i++) {
